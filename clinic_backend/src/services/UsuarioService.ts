@@ -1,6 +1,5 @@
 import type { Usuario } from "../prisma/generated/prisma/client";
 import { createHash } from "../utils/createHash";
-import bcrypt from "bcrypt";
 import { usuarioRepository, type UsuarioRepository } from "../repositories/UsuarioRepository";
 
 export class UsuarioService {
