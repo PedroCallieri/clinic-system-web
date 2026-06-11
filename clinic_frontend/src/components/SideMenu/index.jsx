@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from 'react-router'
+import { Link, useNavigate, NavLink } from 'react-router'
 import {
     MdDashboard,
     MdExitToApp,
@@ -64,67 +64,86 @@ const SideMenu = () => {
                 <ul className='space-y-3'>
                     <li>
                         <NavLink
-                            to='/dashboard'
+                            to="/dashboard"
                             className={({ isActive }) =>
-                                `flex items-center gap-3 ${isActive ? 'text-cyan-300 font-bold' : 'text-white  hover:text-cyan-300'
+                                `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
                                 }`
                             }
                         >
                             <MdDashboard size={20} />
                             {!isCollapsed && <span>Início</span>}
                         </NavLink>
+
+
                     </li>
                     <li>
                         <NavLink
-                            to='/pacientes'
-                            className={({ isActive }) => 
-                                `flex items-center gap-3 ${isActive ? 'text-cyan-300 font-bold' : 'text-white hover:text-cyan-300'
+                            to="/prontuarios"
+                            className={({ isActive }) =>
+                                `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
                                 }`
                             }
-                        >   
-                        
-                            <FaUserPlus size={20} />
-                            {!isCollapsed && <span>Pacientes</span>}
+                        >
+                            <FaCalendarCheck size={20} />
+                            {!isCollapsed && <span>Prontuários</span>}
                         </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to='/consultas'
-                        className={({ isActive }) => 
-                            `flex items-center gap-3 ${isActive ? 'text-cyan-300 font-bold' : 'text-white hover:text-cyan-300'
-                            }`
-                        }
-                    >
-                        <FaCalendarCheck size={20} />
-                         {!isCollapsed && <span>Consultas</span>}
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to='/exames'
-                        className={({ isActive }) => 
-                            `flex items-center gap-3 ${isActive ? 'text-cyan-300 font-bold' : 'text-white hover:text-cyan-300'
-                            }`
-                        }
-                    >
-                        <FaListAlt size={20} />
-                        {!isCollapsed && <span>Exames</span>}
-                    </NavLink>
-                </li>
-            </ul>
-        </nav>
 
-            {/* botao sair */ }
-    <div className='p-4 border-t border-cyan-700'>
-        <button
-            onClick={handleLogout}
-            className='flex items-center gap-3 text-red-300 hover:text-red-500 w-full cursor-pointer'
-        >
-            <MdExitToApp size={20} />
-            {!isCollapsed && <span>Sair</span>}
 
-        </button>
-    </div>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/pacientes"
+                            className={({ isActive }) =>
+                                `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
+                                }`
+                            }
+                        >
+                            <FaUserPlus size={20} />
+                            {!isCollapsed && <span>Registrar Paciente</span>}
+                        </NavLink>
+
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/consultas"
+                            className={({ isActive }) =>
+                                `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
+                                }`
+                            }
+                        >
+                            <MdMenu size={20} />
+                            {!isCollapsed && <span>Consultas</span>}
+                        </NavLink>
+
+
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/exames"
+                            className={({ isActive }) =>
+                                `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
+                                }`
+                            }
+                        >
+                            <FaListAlt size={20} />
+                            {!isCollapsed && <span>Exames</span>}
+                        </NavLink>
+
+                    </li>
+                </ul>
+            </nav>
+
+            {/* botao sair */}
+            <div className='p-4 border-t border-cyan-700'>
+                <button
+                    onClick={handleLogout}
+                    className='flex items-center gap-3 text-red-300 hover:text-red-500 w-full cursor-pointer'
+                >
+                    <MdExitToApp size={20} />
+                    {!isCollapsed && <span>Sair</span>}
+
+                </button>
+            </div>
 
         </aside >
     )
