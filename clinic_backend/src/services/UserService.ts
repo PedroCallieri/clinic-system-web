@@ -1,9 +1,10 @@
 import type { Usuario } from "../prisma/generated/prisma/client";
 import { createHash } from "../utils/createHash";
-import { usuarioRepository, type UsuarioRepository } from "../repositories/UsuarioRepository";
+import bcrypt from "bcrypt";
+import { userRepository, type UserRepository } from "../repositories/UserRepository";
 
-export class UsuarioService {
-    constructor(private readonly repository: UsuarioRepository) { 
+export class UserService {
+    constructor(private readonly repository: UserRepository) { // TO-DO TIPAR SERVICE
     }
 
     async listarTodosUsuarios() {
@@ -17,6 +18,7 @@ export class UsuarioService {
         const usuarioCriado = await this.repository.criarUsuario({
             email: dadosUsuario.email,
             nome: dadosUsuario.nome || null,
+            role: dadosUsuario.role || null,
             senha: hash
         })
         return usuarioCriado
@@ -39,4 +41,4 @@ export class UsuarioService {
     }
 }
 
-export const usuarioService = new UsuarioService(usuarioRepository);
+export const userService = new UserService(userRepository)

@@ -29,38 +29,43 @@ export type AggregateExame = {
 export type ExameAvgAggregateOutputType = {
   id: number | null
   valor: runtime.Decimal | null
+  pacienteId: number | null
 }
 
 export type ExameSumAggregateOutputType = {
   id: number | null
   valor: runtime.Decimal | null
+  pacienteId: number | null
 }
 
 export type ExameMinAggregateOutputType = {
   id: number | null
-  tipo_exame: string | null
+  tipoExame: string | null
   valor: runtime.Decimal | null
   descricao: string | null
   resultado: string | null
   data_exame: Date | null
+  pacienteId: number | null
 }
 
 export type ExameMaxAggregateOutputType = {
   id: number | null
-  tipo_exame: string | null
+  tipoExame: string | null
   valor: runtime.Decimal | null
   descricao: string | null
   resultado: string | null
   data_exame: Date | null
+  pacienteId: number | null
 }
 
 export type ExameCountAggregateOutputType = {
   id: number
-  tipo_exame: number
+  tipoExame: number
   valor: number
   descricao: number
   resultado: number
   data_exame: number
+  pacienteId: number
   _all: number
 }
 
@@ -68,38 +73,43 @@ export type ExameCountAggregateOutputType = {
 export type ExameAvgAggregateInputType = {
   id?: true
   valor?: true
+  pacienteId?: true
 }
 
 export type ExameSumAggregateInputType = {
   id?: true
   valor?: true
+  pacienteId?: true
 }
 
 export type ExameMinAggregateInputType = {
   id?: true
-  tipo_exame?: true
+  tipoExame?: true
   valor?: true
   descricao?: true
   resultado?: true
   data_exame?: true
+  pacienteId?: true
 }
 
 export type ExameMaxAggregateInputType = {
   id?: true
-  tipo_exame?: true
+  tipoExame?: true
   valor?: true
   descricao?: true
   resultado?: true
   data_exame?: true
+  pacienteId?: true
 }
 
 export type ExameCountAggregateInputType = {
   id?: true
-  tipo_exame?: true
+  tipoExame?: true
   valor?: true
   descricao?: true
   resultado?: true
   data_exame?: true
+  pacienteId?: true
   _all?: true
 }
 
@@ -191,11 +201,12 @@ export type ExameGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 
 export type ExameGroupByOutputType = {
   id: number
-  tipo_exame: string
+  tipoExame: string
   valor: runtime.Decimal
   descricao: string
   resultado: string
   data_exame: Date
+  pacienteId: number
   _count: ExameCountAggregateOutputType | null
   _avg: ExameAvgAggregateOutputType | null
   _sum: ExameSumAggregateOutputType | null
@@ -223,20 +234,24 @@ export type ExameWhereInput = {
   OR?: Prisma.ExameWhereInput[]
   NOT?: Prisma.ExameWhereInput | Prisma.ExameWhereInput[]
   id?: Prisma.IntFilter<"Exame"> | number
-  tipo_exame?: Prisma.StringFilter<"Exame"> | string
+  tipoExame?: Prisma.StringFilter<"Exame"> | string
   valor?: Prisma.DecimalFilter<"Exame"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   descricao?: Prisma.StringFilter<"Exame"> | string
   resultado?: Prisma.StringFilter<"Exame"> | string
   data_exame?: Prisma.DateTimeFilter<"Exame"> | Date | string
+  pacienteId?: Prisma.IntFilter<"Exame"> | number
+  paciente?: Prisma.XOR<Prisma.PacienteScalarRelationFilter, Prisma.PacienteWhereInput>
 }
 
 export type ExameOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  tipo_exame?: Prisma.SortOrder
+  tipoExame?: Prisma.SortOrder
   valor?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
   resultado?: Prisma.SortOrder
   data_exame?: Prisma.SortOrder
+  pacienteId?: Prisma.SortOrder
+  paciente?: Prisma.PacienteOrderByWithRelationInput
 }
 
 export type ExameWhereUniqueInput = Prisma.AtLeast<{
@@ -244,20 +259,23 @@ export type ExameWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ExameWhereInput | Prisma.ExameWhereInput[]
   OR?: Prisma.ExameWhereInput[]
   NOT?: Prisma.ExameWhereInput | Prisma.ExameWhereInput[]
-  tipo_exame?: Prisma.StringFilter<"Exame"> | string
+  tipoExame?: Prisma.StringFilter<"Exame"> | string
   valor?: Prisma.DecimalFilter<"Exame"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   descricao?: Prisma.StringFilter<"Exame"> | string
   resultado?: Prisma.StringFilter<"Exame"> | string
   data_exame?: Prisma.DateTimeFilter<"Exame"> | Date | string
+  pacienteId?: Prisma.IntFilter<"Exame"> | number
+  paciente?: Prisma.XOR<Prisma.PacienteScalarRelationFilter, Prisma.PacienteWhereInput>
 }, "id">
 
 export type ExameOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  tipo_exame?: Prisma.SortOrder
+  tipoExame?: Prisma.SortOrder
   valor?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
   resultado?: Prisma.SortOrder
   data_exame?: Prisma.SortOrder
+  pacienteId?: Prisma.SortOrder
   _count?: Prisma.ExameCountOrderByAggregateInput
   _avg?: Prisma.ExameAvgOrderByAggregateInput
   _max?: Prisma.ExameMaxOrderByAggregateInput
@@ -270,58 +288,64 @@ export type ExameScalarWhereWithAggregatesInput = {
   OR?: Prisma.ExameScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ExameScalarWhereWithAggregatesInput | Prisma.ExameScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Exame"> | number
-  tipo_exame?: Prisma.StringWithAggregatesFilter<"Exame"> | string
+  tipoExame?: Prisma.StringWithAggregatesFilter<"Exame"> | string
   valor?: Prisma.DecimalWithAggregatesFilter<"Exame"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   descricao?: Prisma.StringWithAggregatesFilter<"Exame"> | string
   resultado?: Prisma.StringWithAggregatesFilter<"Exame"> | string
   data_exame?: Prisma.DateTimeWithAggregatesFilter<"Exame"> | Date | string
+  pacienteId?: Prisma.IntWithAggregatesFilter<"Exame"> | number
 }
 
 export type ExameCreateInput = {
-  tipo_exame: string
+  tipoExame: string
   valor: runtime.Decimal | runtime.DecimalJsLike | number | string
   descricao: string
   resultado: string
   data_exame: Date | string
+  paciente: Prisma.PacienteCreateNestedOneWithoutExameInput
 }
 
 export type ExameUncheckedCreateInput = {
   id?: number
-  tipo_exame: string
+  tipoExame: string
   valor: runtime.Decimal | runtime.DecimalJsLike | number | string
   descricao: string
   resultado: string
   data_exame: Date | string
+  pacienteId: number
 }
 
 export type ExameUpdateInput = {
-  tipo_exame?: Prisma.StringFieldUpdateOperationsInput | string
+  tipoExame?: Prisma.StringFieldUpdateOperationsInput | string
   valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   resultado?: Prisma.StringFieldUpdateOperationsInput | string
   data_exame?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  paciente?: Prisma.PacienteUpdateOneRequiredWithoutExameNestedInput
 }
 
 export type ExameUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  tipo_exame?: Prisma.StringFieldUpdateOperationsInput | string
+  tipoExame?: Prisma.StringFieldUpdateOperationsInput | string
   valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   resultado?: Prisma.StringFieldUpdateOperationsInput | string
   data_exame?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pacienteId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ExameCreateManyInput = {
   id?: number
-  tipo_exame: string
+  tipoExame: string
   valor: runtime.Decimal | runtime.DecimalJsLike | number | string
   descricao: string
   resultado: string
   data_exame: Date | string
+  pacienteId: number
 }
 
 export type ExameUpdateManyMutationInput = {
-  tipo_exame?: Prisma.StringFieldUpdateOperationsInput | string
+  tipoExame?: Prisma.StringFieldUpdateOperationsInput | string
   valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   resultado?: Prisma.StringFieldUpdateOperationsInput | string
@@ -330,48 +354,64 @@ export type ExameUpdateManyMutationInput = {
 
 export type ExameUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  tipo_exame?: Prisma.StringFieldUpdateOperationsInput | string
+  tipoExame?: Prisma.StringFieldUpdateOperationsInput | string
   valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   resultado?: Prisma.StringFieldUpdateOperationsInput | string
   data_exame?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pacienteId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ExameCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  tipo_exame?: Prisma.SortOrder
+  tipoExame?: Prisma.SortOrder
   valor?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
   resultado?: Prisma.SortOrder
   data_exame?: Prisma.SortOrder
+  pacienteId?: Prisma.SortOrder
 }
 
 export type ExameAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   valor?: Prisma.SortOrder
+  pacienteId?: Prisma.SortOrder
 }
 
 export type ExameMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  tipo_exame?: Prisma.SortOrder
+  tipoExame?: Prisma.SortOrder
   valor?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
   resultado?: Prisma.SortOrder
   data_exame?: Prisma.SortOrder
+  pacienteId?: Prisma.SortOrder
 }
 
 export type ExameMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  tipo_exame?: Prisma.SortOrder
+  tipoExame?: Prisma.SortOrder
   valor?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
   resultado?: Prisma.SortOrder
   data_exame?: Prisma.SortOrder
+  pacienteId?: Prisma.SortOrder
 }
 
 export type ExameSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   valor?: Prisma.SortOrder
+  pacienteId?: Prisma.SortOrder
+}
+
+export type ExameListRelationFilter = {
+  every?: Prisma.ExameWhereInput
+  some?: Prisma.ExameWhereInput
+  none?: Prisma.ExameWhereInput
+}
+
+export type ExameOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type DecimalFieldUpdateOperationsInput = {
@@ -386,56 +426,208 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+export type ExameCreateNestedManyWithoutPacienteInput = {
+  create?: Prisma.XOR<Prisma.ExameCreateWithoutPacienteInput, Prisma.ExameUncheckedCreateWithoutPacienteInput> | Prisma.ExameCreateWithoutPacienteInput[] | Prisma.ExameUncheckedCreateWithoutPacienteInput[]
+  connectOrCreate?: Prisma.ExameCreateOrConnectWithoutPacienteInput | Prisma.ExameCreateOrConnectWithoutPacienteInput[]
+  createMany?: Prisma.ExameCreateManyPacienteInputEnvelope
+  connect?: Prisma.ExameWhereUniqueInput | Prisma.ExameWhereUniqueInput[]
+}
+
+export type ExameUncheckedCreateNestedManyWithoutPacienteInput = {
+  create?: Prisma.XOR<Prisma.ExameCreateWithoutPacienteInput, Prisma.ExameUncheckedCreateWithoutPacienteInput> | Prisma.ExameCreateWithoutPacienteInput[] | Prisma.ExameUncheckedCreateWithoutPacienteInput[]
+  connectOrCreate?: Prisma.ExameCreateOrConnectWithoutPacienteInput | Prisma.ExameCreateOrConnectWithoutPacienteInput[]
+  createMany?: Prisma.ExameCreateManyPacienteInputEnvelope
+  connect?: Prisma.ExameWhereUniqueInput | Prisma.ExameWhereUniqueInput[]
+}
+
+export type ExameUpdateManyWithoutPacienteNestedInput = {
+  create?: Prisma.XOR<Prisma.ExameCreateWithoutPacienteInput, Prisma.ExameUncheckedCreateWithoutPacienteInput> | Prisma.ExameCreateWithoutPacienteInput[] | Prisma.ExameUncheckedCreateWithoutPacienteInput[]
+  connectOrCreate?: Prisma.ExameCreateOrConnectWithoutPacienteInput | Prisma.ExameCreateOrConnectWithoutPacienteInput[]
+  upsert?: Prisma.ExameUpsertWithWhereUniqueWithoutPacienteInput | Prisma.ExameUpsertWithWhereUniqueWithoutPacienteInput[]
+  createMany?: Prisma.ExameCreateManyPacienteInputEnvelope
+  set?: Prisma.ExameWhereUniqueInput | Prisma.ExameWhereUniqueInput[]
+  disconnect?: Prisma.ExameWhereUniqueInput | Prisma.ExameWhereUniqueInput[]
+  delete?: Prisma.ExameWhereUniqueInput | Prisma.ExameWhereUniqueInput[]
+  connect?: Prisma.ExameWhereUniqueInput | Prisma.ExameWhereUniqueInput[]
+  update?: Prisma.ExameUpdateWithWhereUniqueWithoutPacienteInput | Prisma.ExameUpdateWithWhereUniqueWithoutPacienteInput[]
+  updateMany?: Prisma.ExameUpdateManyWithWhereWithoutPacienteInput | Prisma.ExameUpdateManyWithWhereWithoutPacienteInput[]
+  deleteMany?: Prisma.ExameScalarWhereInput | Prisma.ExameScalarWhereInput[]
+}
+
+export type ExameUncheckedUpdateManyWithoutPacienteNestedInput = {
+  create?: Prisma.XOR<Prisma.ExameCreateWithoutPacienteInput, Prisma.ExameUncheckedCreateWithoutPacienteInput> | Prisma.ExameCreateWithoutPacienteInput[] | Prisma.ExameUncheckedCreateWithoutPacienteInput[]
+  connectOrCreate?: Prisma.ExameCreateOrConnectWithoutPacienteInput | Prisma.ExameCreateOrConnectWithoutPacienteInput[]
+  upsert?: Prisma.ExameUpsertWithWhereUniqueWithoutPacienteInput | Prisma.ExameUpsertWithWhereUniqueWithoutPacienteInput[]
+  createMany?: Prisma.ExameCreateManyPacienteInputEnvelope
+  set?: Prisma.ExameWhereUniqueInput | Prisma.ExameWhereUniqueInput[]
+  disconnect?: Prisma.ExameWhereUniqueInput | Prisma.ExameWhereUniqueInput[]
+  delete?: Prisma.ExameWhereUniqueInput | Prisma.ExameWhereUniqueInput[]
+  connect?: Prisma.ExameWhereUniqueInput | Prisma.ExameWhereUniqueInput[]
+  update?: Prisma.ExameUpdateWithWhereUniqueWithoutPacienteInput | Prisma.ExameUpdateWithWhereUniqueWithoutPacienteInput[]
+  updateMany?: Prisma.ExameUpdateManyWithWhereWithoutPacienteInput | Prisma.ExameUpdateManyWithWhereWithoutPacienteInput[]
+  deleteMany?: Prisma.ExameScalarWhereInput | Prisma.ExameScalarWhereInput[]
+}
+
+export type ExameCreateWithoutPacienteInput = {
+  tipoExame: string
+  valor: runtime.Decimal | runtime.DecimalJsLike | number | string
+  descricao: string
+  resultado: string
+  data_exame: Date | string
+}
+
+export type ExameUncheckedCreateWithoutPacienteInput = {
+  id?: number
+  tipoExame: string
+  valor: runtime.Decimal | runtime.DecimalJsLike | number | string
+  descricao: string
+  resultado: string
+  data_exame: Date | string
+}
+
+export type ExameCreateOrConnectWithoutPacienteInput = {
+  where: Prisma.ExameWhereUniqueInput
+  create: Prisma.XOR<Prisma.ExameCreateWithoutPacienteInput, Prisma.ExameUncheckedCreateWithoutPacienteInput>
+}
+
+export type ExameCreateManyPacienteInputEnvelope = {
+  data: Prisma.ExameCreateManyPacienteInput | Prisma.ExameCreateManyPacienteInput[]
+  skipDuplicates?: boolean
+}
+
+export type ExameUpsertWithWhereUniqueWithoutPacienteInput = {
+  where: Prisma.ExameWhereUniqueInput
+  update: Prisma.XOR<Prisma.ExameUpdateWithoutPacienteInput, Prisma.ExameUncheckedUpdateWithoutPacienteInput>
+  create: Prisma.XOR<Prisma.ExameCreateWithoutPacienteInput, Prisma.ExameUncheckedCreateWithoutPacienteInput>
+}
+
+export type ExameUpdateWithWhereUniqueWithoutPacienteInput = {
+  where: Prisma.ExameWhereUniqueInput
+  data: Prisma.XOR<Prisma.ExameUpdateWithoutPacienteInput, Prisma.ExameUncheckedUpdateWithoutPacienteInput>
+}
+
+export type ExameUpdateManyWithWhereWithoutPacienteInput = {
+  where: Prisma.ExameScalarWhereInput
+  data: Prisma.XOR<Prisma.ExameUpdateManyMutationInput, Prisma.ExameUncheckedUpdateManyWithoutPacienteInput>
+}
+
+export type ExameScalarWhereInput = {
+  AND?: Prisma.ExameScalarWhereInput | Prisma.ExameScalarWhereInput[]
+  OR?: Prisma.ExameScalarWhereInput[]
+  NOT?: Prisma.ExameScalarWhereInput | Prisma.ExameScalarWhereInput[]
+  id?: Prisma.IntFilter<"Exame"> | number
+  tipoExame?: Prisma.StringFilter<"Exame"> | string
+  valor?: Prisma.DecimalFilter<"Exame"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  descricao?: Prisma.StringFilter<"Exame"> | string
+  resultado?: Prisma.StringFilter<"Exame"> | string
+  data_exame?: Prisma.DateTimeFilter<"Exame"> | Date | string
+  pacienteId?: Prisma.IntFilter<"Exame"> | number
+}
+
+export type ExameCreateManyPacienteInput = {
+  id?: number
+  tipoExame: string
+  valor: runtime.Decimal | runtime.DecimalJsLike | number | string
+  descricao: string
+  resultado: string
+  data_exame: Date | string
+}
+
+export type ExameUpdateWithoutPacienteInput = {
+  tipoExame?: Prisma.StringFieldUpdateOperationsInput | string
+  valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  descricao?: Prisma.StringFieldUpdateOperationsInput | string
+  resultado?: Prisma.StringFieldUpdateOperationsInput | string
+  data_exame?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ExameUncheckedUpdateWithoutPacienteInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  tipoExame?: Prisma.StringFieldUpdateOperationsInput | string
+  valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  descricao?: Prisma.StringFieldUpdateOperationsInput | string
+  resultado?: Prisma.StringFieldUpdateOperationsInput | string
+  data_exame?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ExameUncheckedUpdateManyWithoutPacienteInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  tipoExame?: Prisma.StringFieldUpdateOperationsInput | string
+  valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  descricao?: Prisma.StringFieldUpdateOperationsInput | string
+  resultado?: Prisma.StringFieldUpdateOperationsInput | string
+  data_exame?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 
 
 export type ExameSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  tipo_exame?: boolean
+  tipoExame?: boolean
   valor?: boolean
   descricao?: boolean
   resultado?: boolean
   data_exame?: boolean
+  pacienteId?: boolean
+  paciente?: boolean | Prisma.PacienteDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["exame"]>
 
 export type ExameSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  tipo_exame?: boolean
+  tipoExame?: boolean
   valor?: boolean
   descricao?: boolean
   resultado?: boolean
   data_exame?: boolean
+  pacienteId?: boolean
+  paciente?: boolean | Prisma.PacienteDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["exame"]>
 
 export type ExameSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  tipo_exame?: boolean
+  tipoExame?: boolean
   valor?: boolean
   descricao?: boolean
   resultado?: boolean
   data_exame?: boolean
+  pacienteId?: boolean
+  paciente?: boolean | Prisma.PacienteDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["exame"]>
 
 export type ExameSelectScalar = {
   id?: boolean
-  tipo_exame?: boolean
+  tipoExame?: boolean
   valor?: boolean
   descricao?: boolean
   resultado?: boolean
   data_exame?: boolean
+  pacienteId?: boolean
 }
 
-export type ExameOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tipo_exame" | "valor" | "descricao" | "resultado" | "data_exame", ExtArgs["result"]["exame"]>
+export type ExameOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tipoExame" | "valor" | "descricao" | "resultado" | "data_exame" | "pacienteId", ExtArgs["result"]["exame"]>
+export type ExameInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  paciente?: boolean | Prisma.PacienteDefaultArgs<ExtArgs>
+}
+export type ExameIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  paciente?: boolean | Prisma.PacienteDefaultArgs<ExtArgs>
+}
+export type ExameIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  paciente?: boolean | Prisma.PacienteDefaultArgs<ExtArgs>
+}
 
 export type $ExamePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Exame"
-  objects: {}
+  objects: {
+    paciente: Prisma.$PacientePayload<ExtArgs>
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    tipo_exame: string
+    tipoExame: string
     valor: runtime.Decimal
     descricao: string
     resultado: string
     data_exame: Date
+    pacienteId: number
   }, ExtArgs["result"]["exame"]>
   composites: {}
 }
@@ -830,6 +1022,7 @@ readonly fields: ExameFieldRefs;
  */
 export interface Prisma__ExameClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  paciente<T extends Prisma.PacienteDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PacienteDefaultArgs<ExtArgs>>): Prisma.Prisma__PacienteClient<runtime.Types.Result.GetResult<Prisma.$PacientePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -860,11 +1053,12 @@ export interface Prisma__ExameClient<T, Null = never, ExtArgs extends runtime.Ty
  */
 export interface ExameFieldRefs {
   readonly id: Prisma.FieldRef<"Exame", 'Int'>
-  readonly tipo_exame: Prisma.FieldRef<"Exame", 'String'>
+  readonly tipoExame: Prisma.FieldRef<"Exame", 'String'>
   readonly valor: Prisma.FieldRef<"Exame", 'Decimal'>
   readonly descricao: Prisma.FieldRef<"Exame", 'String'>
   readonly resultado: Prisma.FieldRef<"Exame", 'String'>
   readonly data_exame: Prisma.FieldRef<"Exame", 'DateTime'>
+  readonly pacienteId: Prisma.FieldRef<"Exame", 'Int'>
 }
     
 
@@ -881,6 +1075,10 @@ export type ExameFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Exame
    */
   omit?: Prisma.ExameOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExameInclude<ExtArgs> | null
   /**
    * Filter, which Exame to fetch.
    */
@@ -900,6 +1098,10 @@ export type ExameFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.ExameOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExameInclude<ExtArgs> | null
+  /**
    * Filter, which Exame to fetch.
    */
   where: Prisma.ExameWhereUniqueInput
@@ -917,6 +1119,10 @@ export type ExameFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Exame
    */
   omit?: Prisma.ExameOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExameInclude<ExtArgs> | null
   /**
    * Filter, which Exame to fetch.
    */
@@ -966,6 +1172,10 @@ export type ExameFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.ExameOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExameInclude<ExtArgs> | null
+  /**
    * Filter, which Exame to fetch.
    */
   where?: Prisma.ExameWhereInput
@@ -1014,6 +1224,10 @@ export type ExameFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.ExameOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExameInclude<ExtArgs> | null
+  /**
    * Filter, which Exames to fetch.
    */
   where?: Prisma.ExameWhereInput
@@ -1057,6 +1271,10 @@ export type ExameCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.ExameOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExameInclude<ExtArgs> | null
+  /**
    * The data needed to create a Exame.
    */
   data: Prisma.XOR<Prisma.ExameCreateInput, Prisma.ExameUncheckedCreateInput>
@@ -1090,6 +1308,10 @@ export type ExameCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    */
   data: Prisma.ExameCreateManyInput | Prisma.ExameCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExameIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1104,6 +1326,10 @@ export type ExameUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Exame
    */
   omit?: Prisma.ExameOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExameInclude<ExtArgs> | null
   /**
    * The data needed to update a Exame.
    */
@@ -1156,6 +1382,10 @@ export type ExameUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    * Limit how many Exames to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExameIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1170,6 +1400,10 @@ export type ExameUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Exame
    */
   omit?: Prisma.ExameOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExameInclude<ExtArgs> | null
   /**
    * The filter to search for the Exame to update in case it exists.
    */
@@ -1196,6 +1430,10 @@ export type ExameDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Exame
    */
   omit?: Prisma.ExameOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExameInclude<ExtArgs> | null
   /**
    * Filter which Exame to delete.
    */
@@ -1228,4 +1466,8 @@ export type ExameDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Exame
    */
   omit?: Prisma.ExameOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExameInclude<ExtArgs> | null
 }
